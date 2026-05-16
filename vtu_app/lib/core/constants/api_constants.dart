@@ -43,7 +43,7 @@ class ApiConstants {
     ANDROID EMULATOR:
     Use 10.0.2.2 to access your computer localhost
   */
-  // static const String baseUrl = 'http://10.0.2.2:5000/api';
+  // static const String baseUrl = 'http://10.124.142.35:5000/api';
 
   /*
     IOS SIMULATOR:
