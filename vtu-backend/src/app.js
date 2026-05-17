@@ -23,6 +23,7 @@ const vtuLimiter = rateLimit({
   message: 'Too many VTU requests, please try again later.'
 });
 
+
 app.use('/api/auth', authRoutes);
 app.use('/api/wallet', walletRoutes);
 app.use('/api/vtu', vtuLimiter, vtuRoutes);
@@ -30,9 +31,14 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/admin', pricingRoutes);
 app.use('/api/pricing', pricingRoutes);
 
+app.get('/', (req, res) => {
+  res.send('VTU Backend API is running...');
+});
+
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', service: 'VTU Backend API', version: '1.0.0' });
 });
+
 
 app.use(notFound);
 app.use(errorHandler);
