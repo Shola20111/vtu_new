@@ -191,5 +191,5 @@ class _WalletScreenState extends State<WalletScreen> {
     );
   }
 
-  Widget _divider() => Divider(height: 1, color: AppColors.divider);
+  Widget _divider() => const Divider(height: 1, color: AppColors.divider);
 }

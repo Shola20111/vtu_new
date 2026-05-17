@@ -123,7 +123,7 @@ class _DataScreenState extends State<DataScreen> {
                     onTap: () => setState(() => _selectedPlan = plan),
                     child: Container(
                       padding: EdgeInsets.all(16.w),
-                      decoration: BoxDecoration(color: sel ? AppColors.primary.withOpacity(0.05) : null, border: Border(bottom: BorderSide(color: AppColors.divider))),
+                      decoration: BoxDecoration(color: sel ? AppColors.primary.withOpacity(0.05) : null, border: const Border(bottom: BorderSide(color: AppColors.divider))),
                       child: Row(children: [
                         Container(width: 24.w, height: 24.w, decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: sel ? AppColors.primary : AppColors.border, width: 2)), child: sel ? Center(child: Container(width: 12.w, height: 12.w, decoration: const BoxDecoration(shape: BoxShape.circle, color: AppColors.primary))) : null),
                         SizedBox(width: 12.w),
@@ -137,7 +137,7 @@ class _DataScreenState extends State<DataScreen> {
             SizedBox(height: 24.h),
             CustomTextField(controller: _phoneController, label: "Phone Number", hint: "Enter phone number", keyboardType: TextInputType.phone, validator: Validators.phone),
             SizedBox(height: 24.h),
-            if (_selectedPlan != null) Container(padding: EdgeInsets.all(16.w), decoration: BoxDecoration(color: AppColors.success.withOpacity(0.1), borderRadius: BorderRadius.circular(12.r)), child: Row(children: [const Icon(Icons.check_circle, color: AppColors.success), SizedBox(width: 12.w), Text("${_selectedPlan!.name}: ${_selectedPlan!.formattedPrice}", style: TextStyle(fontWeight: FontWeight.w600))])),
+            if (_selectedPlan != null) Container(padding: EdgeInsets.all(16.w), decoration: BoxDecoration(color: AppColors.success.withOpacity(0.1), borderRadius: BorderRadius.circular(12.r)), child: Row(children: [const Icon(Icons.check_circle, color: AppColors.success), SizedBox(width: 12.w), Text("${_selectedPlan!.name}: ${_selectedPlan!.formattedPrice}", style: const TextStyle(fontWeight: FontWeight.w600))])),
             SizedBox(height: 24.h),
             Consumer<AuthProvider>(builder: (_, auth, __) => Container(padding: EdgeInsets.all(16.w), decoration: BoxDecoration(color: AppColors.primary.withOpacity(0.1), borderRadius: BorderRadius.circular(12.r)), child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Balance:", style: TextStyle(fontSize: 14.sp, color: AppColors.textSecondary)), Text("N${auth.user?.walletBalance.toStringAsFixed(2) ?? "0.00"}", style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold, color: AppColors.primary))]))),
             SizedBox(height: 32.h),

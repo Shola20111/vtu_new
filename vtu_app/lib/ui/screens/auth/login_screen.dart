@@ -606,8 +606,8 @@ class _LoginScreenState
 
         ScaffoldMessenger.of(context)
             .showSnackBar(
-          SnackBar(
-            content: const Text(
+          const SnackBar(
+            content: Text(
               'Wallet initialization failed',
             ),
 

@@ -278,7 +278,7 @@ class CustomTextField extends StatelessWidget {
                 14.r,
               ),
               borderSide:
-                  BorderSide(
+                  const BorderSide(
                 color:
                     AppColors
                         .border,

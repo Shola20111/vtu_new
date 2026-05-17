@@ -793,7 +793,6 @@ import 'package:vtu_app/core/constants/app_colors.dart';
 import 'package:vtu_app/core/providers/auth_provider.dart';
 import 'package:vtu_app/core/providers/wallet_provider.dart';
 import 'package:vtu_app/ui/widgets/transaction_tile.dart';
-import 'package:vtu_app/utils/extensions.dart';
 
 class HomeScreen extends StatefulWidget {
   final StatefulNavigationShell navigationShell;

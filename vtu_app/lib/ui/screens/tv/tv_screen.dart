@@ -166,7 +166,7 @@ class _TVScreenState extends State<TVScreen> {
                       padding: EdgeInsets.all(16.w),
                       decoration: BoxDecoration(
                         color: sel ? AppColors.primary.withOpacity(0.05) : null,
-                        border: Border(bottom: BorderSide(color: AppColors.divider)),
+                        border: const Border(bottom: BorderSide(color: AppColors.divider)),
                       ),
                       child: Row(children: [
                         Container(

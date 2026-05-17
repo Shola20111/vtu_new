@@ -77,17 +77,17 @@ class ApiClient {
       BaseOptions(
         baseUrl: ApiConstants.baseUrl,
 
-        connectTimeout: Duration(
+        connectTimeout: const Duration(
           milliseconds:
               ApiConstants.connectTimeout,
         ),
 
-        receiveTimeout: Duration(
+        receiveTimeout: const Duration(
           milliseconds:
               ApiConstants.receiveTimeout,
         ),
 
-        sendTimeout: Duration(
+        sendTimeout: const Duration(
           milliseconds:
               ApiConstants.connectTimeout,
         ),

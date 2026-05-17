@@ -147,7 +147,7 @@ class _AirtimeScreenState extends State<AirtimeScreen> {
               ),
               SizedBox(height: 12.h),
               DropdownButtonFormField<double>(
-                value: _selectedAmount,
+                initialValue: _selectedAmount,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12.r),
