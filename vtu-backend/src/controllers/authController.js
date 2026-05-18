@@ -6,7 +6,7 @@ const registerUser = async (req, res) => {
     const { fullName, email, username, password, phone } = req.body;
 
     const userExists = await User.findOne({ $or: [{ email }, { username }] });
-    
+
     if (userExists) {
       return res.status(400).json({ success: false, message: 'User already exists' });
     }
@@ -41,10 +41,16 @@ const registerUser = async (req, res) => {
 
 const loginUser = async (req, res) => {
   try {
-    const { identifier, password } = req.body;
+    // const { identifier, password } = req.body;
+
+    // const user = await User.findOne({
+    //   $or: [{ email: identifier }, { username: identifier }]
+    // });
+
+    const { email, password } = req.body;
 
     const user = await User.findOne({
-      $or: [{ email: identifier }, { username: identifier }]
+      $or: [{ email }, { username: email }]
     });
 
     if (user && (await user.matchPassword(password))) {
