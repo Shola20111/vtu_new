@@ -97,12 +97,12 @@
 //           if (serviceType != null) 'serviceType': serviceType,
 //         },
 //       );
-      
+
 //       final data = response.data;
 //       final transactions = (data['transactions'] as List?)
 //           ?.map((t) => Transaction.fromJson(t))
 //           .toList() ?? [];
-      
+
 //       return transactions;
 //     } on DioException catch (e) {
 //       throw _handleError(e);
@@ -123,7 +123,7 @@
 //     if (e.response?.data != null && e.response?.data['message'] != null) {
 //       return e.response?.data['message'];
 //     }
-    
+
 //     switch (e.type) {
 //       case DioExceptionType.connectionTimeout:
 //         return 'Connection timeout. Please try again.';
@@ -143,7 +143,6 @@
 //   }
 // }
 
-
 import 'package:dio/dio.dart';
 
 import 'package:vtu_app/core/constants/api_constants.dart';
@@ -157,26 +156,21 @@ class VTUService {
   final Dio _dio = ApiClient().dio;
 
   /// Airtime Purchase
-  Future<VTUResponse>
-      purchaseAirtime(
+  Future<VTUResponse> purchaseAirtime(
     AirtimeRequest request,
   ) async {
     return _postVTURequest(
-      endpoint:
-          ApiConstants.airtime,
-
+      endpoint: ApiConstants.airtime,
       data: request.toJson(),
     );
   }
 
   /// Get Data Plans
-  Future<DataPlanResponse>
-      getDataPlans(
+  Future<DataPlanResponse> getDataPlans(
     String network,
   ) async {
     try {
-      final response =
-          await _dio.get(
+      final response = await _dio.get(
         '${ApiConstants.dataPlans}/$network',
       );
 
@@ -184,8 +178,7 @@ class VTUService {
         response,
       );
 
-      return DataPlanResponse
-          .fromJson(
+      return DataPlanResponse.fromJson(
         response.data,
       );
     } on DioException catch (e) {
@@ -198,74 +191,58 @@ class VTUService {
   }
 
   /// Purchase Data
-  Future<VTUResponse>
-      purchaseData(
+  Future<VTUResponse> purchaseData(
     DataRequest request,
   ) async {
     return _postVTURequest(
       endpoint: ApiConstants.data,
-
       data: request.toJson(),
     );
   }
 
   /// Electricity
-  Future<VTUResponse>
-      purchaseElectricity(
+  Future<VTUResponse> purchaseElectricity(
     ElectricityRequest request,
   ) async {
     return _postVTURequest(
-      endpoint:
-          ApiConstants.electricity,
-
+      endpoint: ApiConstants.electricity,
       data: request.toJson(),
     );
   }
 
   /// TV Subscription
-  Future<VTUResponse>
-      purchaseTV(
+  Future<VTUResponse> purchaseTV(
     TVRequest request,
   ) async {
     return _postVTURequest(
       endpoint: ApiConstants.tv,
-
       data: request.toJson(),
     );
   }
 
   /// Exam PIN
-  Future<VTUResponse>
-      purchaseExamPIN(
+  Future<VTUResponse> purchaseExamPIN(
     ExamPinRequest request,
   ) async {
     return _postVTURequest(
-      endpoint:
-          ApiConstants.exam,
-
+      endpoint: ApiConstants.exam,
       data: request.toJson(),
     );
   }
 
   /// Transactions
-  Future<List<Transaction>>
-      getTransactions({
+  Future<List<Transaction>> getTransactions({
     int page = 1,
     int limit = 20,
     String? serviceType,
   }) async {
     try {
-      final response =
-          await _dio.get(
+      final response = await _dio.get(
         ApiConstants.transactions,
-
         queryParameters: {
           'page': page,
           'limit': limit,
-
-          if (serviceType != null)
-            'serviceType':
-                serviceType,
+          if (serviceType != null) 'serviceType': serviceType,
         },
       );
 
@@ -273,21 +250,16 @@ class VTUService {
         response,
       );
 
-      final data =
-          response.data;
+      final data = response.data;
 
-      final transactions =
-          (data['transactions']
-                      as List?)
-                  ?.map(
-                    (json) =>
-                        Transaction
-                            .fromJson(
-                      json,
-                    ),
-                  )
-                  .toList() ??
-              [];
+      final transactions = (data['transactions'] as List?)
+              ?.map(
+                (json) => Transaction.fromJson(
+                  json,
+                ),
+              )
+              .toList() ??
+          [];
 
       return transactions;
     } on DioException catch (e) {
@@ -300,11 +272,9 @@ class VTUService {
   }
 
   /// Wallet Balance
-  Future<double>
-      getWalletBalance() async {
+  Future<double> getWalletBalance() async {
     try {
-      final response =
-          await _dio.get(
+      final response = await _dio.get(
         ApiConstants.walletBalance,
       );
 
@@ -312,8 +282,7 @@ class VTUService {
         response,
       );
 
-      final balance =
-          response.data['data'];
+      final balance = response.data['data'];
 
       if (balance == null) {
         return 0.0;
@@ -332,16 +301,48 @@ class VTUService {
     }
   }
 
+  /// Fund wallet
+  Future<double> fundWallet(
+    int amount,
+  ) async {
+    try {
+      final response = await _dio.post(
+        ApiConstants.fundWallet,
+        data: {
+          'amount': amount,
+        },
+      );
+
+      _validateResponse(
+        response,
+      );
+
+      final balance = response.data['data'];
+
+      if (balance == null) {
+        return 0.0;
+      }
+
+      return double.tryParse(
+            balance.toString(),
+          ) ??
+          0.0;
+    } on DioException catch (e) {
+      throw _handleError(e);
+    } catch (_) {
+      throw Exception(
+        'Failed to fund wallet',
+      );
+    }
+  }
+
   /// Generic VTU POST handler
-  Future<VTUResponse>
-      _postVTURequest({
+  Future<VTUResponse> _postVTURequest({
     required String endpoint,
-    required Map<String, dynamic>
-        data,
+    required Map<String, dynamic> data,
   }) async {
     try {
-      final response =
-          await _dio.post(
+      final response = await _dio.post(
         endpoint,
         data: data,
       );
@@ -350,8 +351,7 @@ class VTUService {
         response,
       );
 
-      return VTUResponse
-          .fromJson(
+      return VTUResponse.fromJson(
         response.data,
       );
     } on DioException catch (e) {
@@ -367,15 +367,13 @@ class VTUService {
   void _validateResponse(
     Response response,
   ) {
-    if (response.statusCode != 200 &&
-        response.statusCode != 201) {
+    if (response.statusCode != 200 && response.statusCode != 201) {
       throw Exception(
         'Unexpected server response',
       );
     }
 
-    final data =
-        response.data;
+    final data = response.data;
 
     if (data == null) {
       throw Exception(
@@ -383,11 +381,9 @@ class VTUService {
       );
     }
 
-    if (data is Map &&
-        data['success'] == false) {
+    if (data is Map && data['success'] == false) {
       throw Exception(
-        data['message'] ??
-            'Operation failed',
+        data['message'] ?? 'Operation failed',
       );
     }
   }
@@ -396,32 +392,25 @@ class VTUService {
   String _handleError(
     DioException e,
   ) {
-    final responseData =
-        e.response?.data;
+    final responseData = e.response?.data;
 
     if (responseData != null &&
         responseData is Map &&
-        responseData['message'] !=
-            null) {
-      return responseData['message']
-          .toString();
+        responseData['message'] != null) {
+      return responseData['message'].toString();
     }
 
     switch (e.type) {
-      case DioExceptionType
-            .connectionTimeout:
+      case DioExceptionType.connectionTimeout:
         return 'Connection timeout. Please try again.';
 
-      case DioExceptionType
-            .sendTimeout:
+      case DioExceptionType.sendTimeout:
         return 'Request timeout. Please try again.';
 
-      case DioExceptionType
-            .receiveTimeout:
+      case DioExceptionType.receiveTimeout:
         return 'Server response timeout.';
 
-      case DioExceptionType
-            .badResponse:
+      case DioExceptionType.badResponse:
         return _handleStatusCode(
           e.response?.statusCode,
         );
@@ -429,8 +418,7 @@ class VTUService {
       case DioExceptionType.cancel:
         return 'Request cancelled';
 
-      case DioExceptionType
-            .connectionError:
+      case DioExceptionType.connectionError:
         return 'No internet connection';
 
       default:
