@@ -247,8 +247,8 @@ class CustomTextField extends StatelessWidget {
                     ? Colors.white
                     : AppColors
                         .border
-                        .withOpacity(
-                        0.2,
+                        .withValues(
+                        alpha: 0.2,
                       ),
 
             contentPadding:
@@ -340,8 +340,8 @@ class CustomTextField extends StatelessWidget {
                 color:
                     AppColors
                         .border
-                        .withOpacity(
-                      0.5,
+                        .withValues(
+                      alpha: 0.5,
                     ),
               ),
             ),

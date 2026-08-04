@@ -78,12 +78,12 @@ class _WalletScreenState extends State<WalletScreen> {
                 decoration: BoxDecoration(
                   gradient: const LinearGradient(colors: [AppColors.primary, Color(0xFF1565C0)]),
                   borderRadius: BorderRadius.circular(20.r),
-                  boxShadow: [BoxShadow(color: AppColors.primary.withOpacity(0.3), blurRadius: 15, offset: const Offset(0, 8))],
+                  boxShadow: [BoxShadow(color: AppColors.primary.withValues(alpha: 0.3), blurRadius: 15, offset: const Offset(0, 8))],
                 ),
                 child: Column(children: [
-                  Icon(Icons.account_balance_wallet, color: Colors.white.withOpacity(0.8), size: 40.sp),
+                  Icon(Icons.account_balance_wallet, color: Colors.white.withValues(alpha: 0.8), size: 40.sp),
                   SizedBox(height: 12.h),
-                  Text("Available Balance", style: TextStyle(fontSize: 13.sp, color: Colors.white.withOpacity(0.8))),
+                  Text("Available Balance", style: TextStyle(fontSize: 13.sp, color: Colors.white.withValues(alpha: 0.8))),
                   SizedBox(height: 8.h),
                   Text(
                     "N${wallet.balance.toStringAsFixed(2)}",
@@ -169,7 +169,7 @@ class _WalletScreenState extends State<WalletScreen> {
       child: Column(children: [
         Container(
           width: 48.w, height: 48.w,
-          decoration: BoxDecoration(color: Colors.white.withOpacity(0.2), borderRadius: BorderRadius.circular(12.r)),
+          decoration: BoxDecoration(color: Colors.white.withValues(alpha: 0.2), borderRadius: BorderRadius.circular(12.r)),
           child: Icon(icon, color: Colors.white, size: 24.sp),
         ),
         SizedBox(height: 6.h),

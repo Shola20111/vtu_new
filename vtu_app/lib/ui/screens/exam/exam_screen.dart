@@ -101,14 +101,14 @@ class _ExamScreenState extends State<ExamScreen> {
                 margin: EdgeInsets.only(bottom: 12.h),
                 padding: EdgeInsets.all(16.w),
                 decoration: BoxDecoration(
-                  color: sel ? color.withOpacity(0.1) : Colors.white,
+                  color: sel ? color.withValues(alpha: 0.1) : Colors.white,
                   borderRadius: BorderRadius.circular(16.r),
                   border: Border.all(color: sel ? color : AppColors.border, width: sel ? 2 : 1),
                 ),
                 child: Row(children: [
                   Container(
                     width: 50.w, height: 50.w,
-                    decoration: BoxDecoration(color: sel ? color : color.withOpacity(0.1), borderRadius: BorderRadius.circular(12.r)),
+                    decoration: BoxDecoration(color: sel ? color : color.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(12.r)),
                     child: Icon(val["icon"] as IconData, color: sel ? Colors.white : color, size: 28.sp),
                   ),
                   SizedBox(width: 16.w),
@@ -120,7 +120,7 @@ class _ExamScreenState extends State<ExamScreen> {
                       SizedBox(height: 6.h),
                       Container(
                         padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
-                        decoration: BoxDecoration(color: color.withOpacity(0.1), borderRadius: BorderRadius.circular(6.r)),
+                        decoration: BoxDecoration(color: color.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(6.r)),
                         child: Text("N${val["price"]}/PIN", style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600, color: color)),
                       ),
                     ]),
@@ -157,16 +157,16 @@ class _ExamScreenState extends State<ExamScreen> {
             width: double.infinity,
             padding: EdgeInsets.all(20.w),
             decoration: BoxDecoration(
-              gradient: LinearGradient(colors: [(exam["color"] as Color).withOpacity(0.8), exam["color"] as Color]),
+              gradient: LinearGradient(colors: [(exam["color"] as Color).withValues(alpha: 0.8), exam["color"] as Color]),
               borderRadius: BorderRadius.circular(16.r),
             ),
             child: Column(children: [
-              Text("Order Summary", style: TextStyle(fontSize: 14.sp, color: Colors.white.withOpacity(0.9))),
+              Text("Order Summary", style: TextStyle(fontSize: 14.sp, color: Colors.white.withValues(alpha: 0.9))),
               SizedBox(height: 16.h),
               _summaryRow("Exam", _selectedExam),
               _summaryRow("Price per PIN", "N${_pricePerUnit.toInt()}"),
               _summaryRow("Quantity", "$_quantity"),
-              Container(height: 1, color: Colors.white.withOpacity(0.3), margin: EdgeInsets.symmetric(vertical: 12.h)),
+              Container(height: 1, color: Colors.white.withValues(alpha: 0.3), margin: EdgeInsets.symmetric(vertical: 12.h)),
               _summaryRow("Total Amount", "N${_totalPrice.toInt()}", bold: true),
             ]),
           ),
@@ -177,7 +177,7 @@ class _ExamScreenState extends State<ExamScreen> {
           Consumer<AuthProvider>(
             builder: (_, auth, __) => Container(
               padding: EdgeInsets.all(16.w),
-              decoration: BoxDecoration(color: AppColors.primary.withOpacity(0.1), borderRadius: BorderRadius.circular(12.r)),
+              decoration: BoxDecoration(color: AppColors.primary.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(12.r)),
               child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                 Text("Balance:", style: TextStyle(fontSize: 14.sp, color: AppColors.textSecondary)),
                 Text("N${auth.user?.walletBalance.toStringAsFixed(2) ?? "0.00"}", style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold, color: AppColors.primary)),
@@ -199,7 +199,7 @@ class _ExamScreenState extends State<ExamScreen> {
       onTap: onTap,
       child: Container(
         width: 44.w, height: 44.w,
-        decoration: BoxDecoration(color: AppColors.primary.withOpacity(0.1), borderRadius: BorderRadius.circular(12.r)),
+        decoration: BoxDecoration(color: AppColors.primary.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(12.r)),
         child: Icon(icon, color: AppColors.primary, size: 22.sp),
       ),
     );
@@ -209,7 +209,7 @@ class _ExamScreenState extends State<ExamScreen> {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 4.h),
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Text(label, style: TextStyle(fontSize: 13.sp, color: Colors.white.withOpacity(0.8))),
+        Text(label, style: TextStyle(fontSize: 13.sp, color: Colors.white.withValues(alpha: 0.8))),
         Text(value, style: TextStyle(fontSize: bold ? 18.sp : 13.sp, fontWeight: bold ? FontWeight.bold : FontWeight.w500, color: Colors.white)),
       ]),
     );

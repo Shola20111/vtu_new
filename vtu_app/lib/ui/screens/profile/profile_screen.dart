@@ -42,7 +42,7 @@ class ProfileScreen extends StatelessWidget {
                     children: [
                       CircleAvatar(
                         radius: 40.r,
-                        backgroundColor: Colors.white.withOpacity(0.2),
+                        backgroundColor: Colors.white.withValues(alpha: 0.2),
                         child: Text(
                           user.fullName.isNotEmpty ? user.fullName[0].toUpperCase() : 'U',
                           style: TextStyle(fontSize: 30.sp, fontWeight: FontWeight.bold, color: Colors.white),
@@ -51,11 +51,11 @@ class ProfileScreen extends StatelessWidget {
                       SizedBox(height: 16.h),
                       Text(user.fullName, style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold, color: Colors.white)),
                       SizedBox(height: 4.h),
-                      Text('@${user.username}', style: TextStyle(fontSize: 14.sp, color: Colors.white.withOpacity(0.8))),
+                      Text('@${user.username}', style: TextStyle(fontSize: 14.sp, color: Colors.white.withValues(alpha: 0.8))),
                       SizedBox(height: 16.h),
                       Container(
                         padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
-                        decoration: BoxDecoration(color: Colors.white.withOpacity(0.2), borderRadius: BorderRadius.circular(20.r)),
+                        decoration: BoxDecoration(color: Colors.white.withValues(alpha: 0.2), borderRadius: BorderRadius.circular(20.r)),
                         child: Text(user.role.toUpperCase(), style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600, color: Colors.white)),
                       ),
                     ],
@@ -135,7 +135,7 @@ class ProfileScreen extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(16.r),
-        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 10, offset: const Offset(0, 2))],
+        boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.05), blurRadius: 10, offset: const Offset(0, 2))],
       ),
       child: Column(children: children),
     );
@@ -148,7 +148,7 @@ class ProfileScreen extends StatelessWidget {
         children: [
           Container(
             padding: EdgeInsets.all(8.w),
-            decoration: BoxDecoration(color: AppColors.primary.withOpacity(0.1), borderRadius: BorderRadius.circular(8.r)),
+            decoration: BoxDecoration(color: AppColors.primary.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(8.r)),
             child: Icon(icon, size: 20.sp, color: AppColors.primary),
           ),
           SizedBox(width: 12.w),
@@ -176,7 +176,7 @@ class ProfileScreen extends StatelessWidget {
           children: [
             Container(
               padding: EdgeInsets.all(8.w),
-              decoration: BoxDecoration(color: AppColors.primary.withOpacity(0.1), borderRadius: BorderRadius.circular(8.r)),
+              decoration: BoxDecoration(color: AppColors.primary.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(8.r)),
               child: Icon(icon, size: 20.sp, color: AppColors.primary),
             ),
             SizedBox(width: 12.w),

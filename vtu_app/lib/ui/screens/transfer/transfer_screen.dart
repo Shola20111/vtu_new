@@ -280,7 +280,7 @@ class _TransferScreenState extends State<TransferScreen> {
             Consumer<AuthProvider>(
               builder: (_, auth, __) => Container(
                 padding: EdgeInsets.all(16.w),
-                decoration: BoxDecoration(color: AppColors.primary.withOpacity(0.1), borderRadius: BorderRadius.circular(12.r)),
+                decoration: BoxDecoration(color: AppColors.primary.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(12.r)),
                 child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                   Text("Your Balance:", style: TextStyle(fontSize: 14.sp, color: AppColors.textSecondary)),
                   Text("N${auth.user?.walletBalance.toStringAsFixed(2) ?? "0.00"}", style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold, color: AppColors.primary)),
@@ -302,7 +302,7 @@ class _TransferScreenState extends State<TransferScreen> {
             // Info note
             Container(
               padding: EdgeInsets.all(12.w),
-              decoration: BoxDecoration(color: AppColors.warning.withOpacity(0.1), borderRadius: BorderRadius.circular(8.r)),
+              decoration: BoxDecoration(color: AppColors.warning.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(8.r)),
               child: Row(children: [
                 Icon(Icons.info_outline, size: 16.sp, color: AppColors.warning),
                 SizedBox(width: 8.w),

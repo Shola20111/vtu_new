@@ -1,34 +1,3 @@
-
-// import 'package:dio/dio.dart';
-// import 'package:vtu_app/core/constants/api_constants.dart';
-// import 'package:vtu_app/core/services/storage_service.dart';
-
-// class ApiInterceptor extends Interceptor {
-//   @override
-//   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-//     final token = StorageService.getTokenSync();
-//     if (token != null && token.isNotEmpty) {
-//       options.headers[ApiConstants.authorization] = 
-//           '${ApiConstants.bearer} $token';
-//     }
-//     handler.next(options);
-//   }
-
-//   @override
-//   void onError(DioException err, ErrorInterceptorHandler handler) {
-//     if (err.response?.statusCode == 401) {
-//       StorageService.clear();
-//     }
-//     handler.next(err);
-//   }
-
-//   @override
-//   void onResponse(Response response, ResponseInterceptorHandler handler) {
-//     handler.next(response);
-//   }
-// }
-
-
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 

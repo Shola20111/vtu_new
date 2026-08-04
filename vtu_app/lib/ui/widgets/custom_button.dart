@@ -213,14 +213,14 @@ class _CustomButtonState
               widget.outlined
                   ? Colors.transparent
                   : AppColors.primary
-                      .withOpacity(
-                    0.5,
+                      .withValues(
+                    alpha: 0.5,
                   ),
 
           disabledForegroundColor:
               foreground
-                  .withOpacity(
-                0.7,
+                  .withValues(
+                alpha: 0.7,
               ),
 
           padding:

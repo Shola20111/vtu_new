@@ -194,7 +194,7 @@ class _ElectricityScreenState extends State<ElectricityScreen> {
             Consumer<AuthProvider>(
               builder: (_, auth, __) => Container(
                 padding: EdgeInsets.all(16.w),
-                decoration: BoxDecoration(color: AppColors.primary.withOpacity(0.1), borderRadius: BorderRadius.circular(12.r)),
+                decoration: BoxDecoration(color: AppColors.primary.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(12.r)),
                 child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                   Text("Balance:", style: TextStyle(fontSize: 14.sp, color: AppColors.textSecondary)),
                   Text("N${auth.user?.walletBalance.toStringAsFixed(2) ?? "0.00"}", style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold, color: AppColors.primary)),

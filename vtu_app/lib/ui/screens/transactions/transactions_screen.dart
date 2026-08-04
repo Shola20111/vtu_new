@@ -99,7 +99,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                     child: Container(
                       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
                       decoration: BoxDecoration(
-                        color: sel ? color : color.withOpacity(0.1),
+                        color: sel ? color : color.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(20.r),
                       ),
                       child: Text(filter, style: TextStyle(
@@ -163,7 +163,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
                         child: Container(
                           padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
                           decoration: BoxDecoration(
-                            color: AppColors.primary.withOpacity(0.1),
+                            color: AppColors.primary.withValues(alpha: 0.1),
                             borderRadius: BorderRadius.circular(8.r),
                           ),
                           child: Text(date, style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600, color: AppColors.primary)),

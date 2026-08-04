@@ -165,7 +165,7 @@ class _TVScreenState extends State<TVScreen> {
                     child: Container(
                       padding: EdgeInsets.all(16.w),
                       decoration: BoxDecoration(
-                        color: sel ? AppColors.primary.withOpacity(0.05) : null,
+                        color: sel ? AppColors.primary.withValues(alpha: 0.05) : null,
                         border: const Border(bottom: BorderSide(color: AppColors.divider)),
                       ),
                       child: Row(children: [
@@ -201,7 +201,7 @@ class _TVScreenState extends State<TVScreen> {
             if (_selectedPackage != null && _selectedPrice != null)
               Container(
                 padding: EdgeInsets.all(16.w),
-                decoration: BoxDecoration(color: AppColors.success.withOpacity(0.1), borderRadius: BorderRadius.circular(12.r)),
+                decoration: BoxDecoration(color: AppColors.success.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(12.r)),
                 child: Row(children: [
                   const Icon(Icons.check_circle, color: AppColors.success),
                   SizedBox(width: 12.w),
@@ -218,7 +218,7 @@ class _TVScreenState extends State<TVScreen> {
             Consumer<AuthProvider>(
               builder: (_, auth, __) => Container(
                 padding: EdgeInsets.all(16.w),
-                decoration: BoxDecoration(color: AppColors.primary.withOpacity(0.1), borderRadius: BorderRadius.circular(12.r)),
+                decoration: BoxDecoration(color: AppColors.primary.withValues(alpha: 0.1), borderRadius: BorderRadius.circular(12.r)),
                 child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                   Text("Balance:", style: TextStyle(fontSize: 14.sp, color: AppColors.textSecondary)),
                   Text("N${auth.user?.walletBalance.toStringAsFixed(2) ?? "0.00"}", style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold, color: AppColors.primary)),
